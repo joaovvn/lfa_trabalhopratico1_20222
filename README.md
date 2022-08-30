@@ -1,1 +1,4 @@
-# trabalholfa1 LETSSSSSSSS GO
+# trabalho LFA
+- João Victor Nogueira
+- João Marcos Cerqueira
+- Walter Ferreira Ramos Júnior
