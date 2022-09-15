@@ -5,11 +5,9 @@ const readFile = () => {
   return fs.readFileSync("./example.txt").toString().split("\n");
 };
 
-const main = () => {
+(async () => {
   const file = readFile();
   const formatedAutomato = getAutomatosInformation(file);
   console.log("file", file);
   console.log("formatedAutomato", formatedAutomato);
-};
-
-main();
+})();
