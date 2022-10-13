@@ -1,16 +1,23 @@
 const fs = require("fs");
-const { getAutomatosInformation, validateAutomato } = require("./utils");
+const { getAutomatosInformation, validateAutomato, isAFND, transformNFAtoDFA } = require("./utils");
 
 const readFile = () => {
-  return fs.readFileSync("./abb-baa.txt").toString().split("\n");
+  return fs.readFileSync("./ex02-deterministico.txt").toString().split("\n");
 };
 
 (async () => {
   const file = readFile();
   const formatedAutomato = getAutomatosInformation(file);
-  // 1001001
-  // 0011
-  // 0000000
-  const response = validateAutomato("aaabb", formatedAutomato);
+  console.log("formatedAutomato", formatedAutomato)
+
+  if (formatedAutomato.isAFND) {
+    const t = transformNFAtoDFA(formatedAutomato.initial, formatedAutomato.alphabet, formatedAutomato.transitions)
+    formatedAutomato.transitions = t
+  }
+
+  console.log("[formatedAutomato]", formatedAutomato)
+
+  const response = validateAutomato("baab", formatedAutomato);
+
   console.log("[RESPONSE]:", response);
 })();
